@@ -1,0 +1,491 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Falcon · Fondeá cuentas de prop firms y cobrá tu primer payout</title>
+<meta name="description" content="El método Falcon para pasar evaluaciones de prop firms y retirar de forma consistente. Agendá una llamada o escribinos por WhatsApp.">
+<meta name="theme-color" content="#0d0d0f">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="canonical" href="https://sebastrade.com/">
+
+<!-- Vista previa al compartir el link (WhatsApp, Instagram, Facebook, X) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_PY">
+<meta property="og:site_name" content="Falcon">
+<meta property="og:title" content="Falcon · Fondeá cuentas de prop firms y cobrá tu primer payout">
+<meta property="og:description" content="El método Falcon para pasar evaluaciones de prop firms y retirar de forma consistente. Agendá una llamada o escribinos por WhatsApp.">
+<meta property="og:url" content="https://sebastrade.com/">
+<meta property="og:image" content="https://sebastrade.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://sebastrade.com/og-image.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@75..100,500..900&family=Manrope:wght@400;500;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+<style>
+/* Layout: one mobile column (TikTok traffic is 95% phone), centered on desktop; terminal-style ticker as the subject detail */
+:root{
+  --ink:#ffffff;        /* fondo blanco */
+  --panel:#f4f3ef;      /* tarjetas, gris cálido muy claro */
+  --line:#e2e0d9;       /* bordes */
+  --gray:#5f5e66;       /* texto secundario */
+  --white:#0d0d0f;      /* texto principal (negro Falcon) */
+  --gold:#a77d22;       /* dorado para texto sobre blanco */
+  --gold-bg:#d4ad55;    /* dorado para botones */
+  --gold-ink:#1a1405;   /* texto sobre dorado */
+  --black:#0d0d0f;      /* bloques negros */
+  --wa:#25d366;         /* verde WhatsApp */
+  --f-display:"Archivo","Arial Narrow",Arial,sans-serif;
+  --f-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{overflow-x:clip;background:var(--ink);color:var(--white);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+.wrap{max-width:480px;margin:0 auto;padding-inline:18px;padding-block:0 40px;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{font-family:var(--f-display);font-stretch:78%;text-wrap:balance;margin:0;line-height:1.02;letter-spacing:-.01em}
+h2{font-size:clamp(28px,8vw,36px);font-weight:800}
+h3{font-size:20px;font-weight:700;font-stretch:90%}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.muted{color:var(--gray)}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+
+/* header */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--ink) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.bar{max-width:480px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--f-display);font-weight:900;font-stretch:80%;font-size:20px;letter-spacing:.04em;text-decoration:none}
+.logo-mark{width:34px;height:34px;border-radius:50%;background:#0d0d0f;display:grid;place-items:center;flex:none}.logo-mark img{width:24px;height:auto;display:block}
+.bar .mini{font-size:13px;font-weight:700;text-decoration:none;color:var(--white);border:1px solid var(--white);padding:7px 12px;border-radius:999px}
+
+/* ticker */
+.ticker{overflow:hidden;background:var(--black)}
+.ticker-track{display:flex;gap:28px;width:max-content;padding:8px 0;font-family:var(--f-mono);font-size:12px;color:#a9a8b0;animation:scroll 28s linear infinite}
+.ticker b{color:#fff;font-weight:500}
+.ticker i{font-style:normal;color:var(--gold-bg)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.ticker-track{animation:none}}
+
+/* hero */
+.hero{padding-top:36px;display:flex;flex-direction:column;gap:20px}
+.hero h1{font-size:clamp(38px,11.5vw,54px);font-weight:900;font-stretch:75%;text-transform:uppercase}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero .lead{font-size:17px;color:var(--gray);max-width:40ch}
+.ctas{display:flex;flex-direction:column;gap:12px}
+.btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 20px;border-radius:14px;font-family:var(--f-body);font-weight:700;font-size:16px;text-decoration:none;border:0;cursor:pointer;width:100%}
+.btn svg{width:20px;height:20px;flex:none}
+.btn-gold{background:var(--black);color:#fff}
+.btn-gold svg{color:var(--gold-bg)}
+.btn-wa{background:var(--wa);color:#04210f}
+.btn-ghost{background:transparent;color:var(--white);border:1px solid var(--line)}
+.btn:active{transform:translateY(1px)}
+
+/* hero background: velas animadas */
+.hero{position:relative;isolation:isolate}
+.hero-bg{position:absolute;z-index:-1;top:-20px;bottom:-30px;left:50%;width:100vw;transform:translateX(-50%);pointer-events:none;
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 55%,transparent 100%);mask-image:linear-gradient(to bottom,transparent 0,#000 18%,#000 55%,transparent 100%)}
+.hero-bg canvas{width:100%;height:100%;display:block}
+.hero h1,.hero .lead{text-shadow:0 0 18px #fff,0 0 2px #fff}
+.proof{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-family:var(--f-mono);font-size:12px;padding:6px 10px;border-radius:8px;background:color-mix(in srgb,var(--ink) 85%,transparent);border:1px solid var(--line);color:var(--white);backdrop-filter:blur(4px)}
+.chip b{color:var(--gold);font-weight:500}
+
+/* video */
+.video{position:relative;width:100%;max-width:100%;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:var(--black)}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-empty{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#b9b8bf;font-family:var(--f-mono);font-size:12px;text-align:center;padding:24px}
+.play{width:56px;height:56px;border-radius:50%;background:var(--gold-bg);display:grid;place-items:center}
+.play svg{width:28px;height:28px;margin-left:4px}
+/* learn list */
+.sect{display:flex;flex-direction:column;gap:20px}
+.levels{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.lvl{display:grid;grid-template-columns:72px 1fr;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.lvl .tag{font-family:var(--f-mono);font-size:11px;letter-spacing:.08em;color:var(--gold);padding-top:4px}
+.lvl div{min-width:0;display:flex;flex-direction:column;gap:4px}
+.lvl p{color:var(--gray);font-size:15px}
+
+/* steps */
+.steps{display:flex;flex-direction:column;gap:12px;counter-reset:s}
+.step{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start;padding:16px;border-radius:14px;background:var(--panel)}
+.step::before{counter-increment:s;content:counter(s);font-family:var(--f-display);font-weight:900;font-size:28px;line-height:1;color:var(--gold)}
+.step div{min-width:0}
+.step p{color:var(--gray);font-size:15px;margin-top:2px}
+
+/* testimonios */
+.tests{display:flex;flex-direction:column;gap:14px}
+.tcard{border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:12px;background:var(--ink)}
+.thead{display:flex;align-items:center;gap:12px}
+.thead div{display:flex;flex-direction:column;min-width:0}
+.thead small{color:var(--gray);font-size:13px}
+.tav{width:44px;height:44px;border-radius:50%;background:var(--black);color:var(--gold-bg);display:grid;place-items:center;font-family:var(--f-display);font-weight:900;font-size:16px;flex:none}
+.tamt{font-family:var(--f-display);font-stretch:75%;font-weight:900;font-size:40px;line-height:1;color:var(--gold);font-variant-numeric:tabular-nums}
+.tamt span{font-family:var(--f-body);font-size:15px;font-weight:500;color:var(--gray);letter-spacing:0}
+blockquote{margin:0;padding:10px 14px;border-radius:10px;background:var(--panel);font-size:15px;color:var(--white)}
+.tshot{min-height:180px;border-radius:12px;border:1px dashed #cfccc3;display:grid;place-items:center;text-align:center;font-family:var(--f-mono);font-size:12px;color:var(--gray);background:repeating-linear-gradient(45deg,var(--panel),var(--panel) 8px,var(--ink) 8px,var(--ink) 16px)}
+.vfall{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;color:#fff;text-decoration:none;font-weight:700}
+/* payouts: carrusel */
+.pcar{position:relative;margin-inline:-18px}
+.payouts{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 18px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.payouts::-webkit-scrollbar{display:none}
+.payouts{align-items:center}
+.payouts a{flex:0 0 auto;--h:min(460px,62vh);width:min(86%,calc(var(--h) * var(--r)));scroll-snap-align:center;border-radius:14px;overflow:hidden;border:1px solid var(--line);background:var(--panel);display:flex;align-items:center;justify-content:center}
+.payouts img{width:100%;height:100%;object-fit:contain;display:block}
+.pnav{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:6px}
+.pcount{font-family:var(--f-mono);font-size:12px;color:var(--gray)}
+.pbtns{display:flex;gap:8px}
+.pbtns button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:var(--ink);color:var(--white);font-size:18px;cursor:pointer;display:grid;place-items:center}
+.pbtns button:disabled{opacity:.35;cursor:default}
+.phint{font-size:13px;color:var(--gray)}
+/* results */
+.results{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.res{border:1px dashed var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:8px;min-height:150px}
+.res .ph{flex:1;border-radius:8px;background:repeating-linear-gradient(45deg,var(--panel),var(--panel) 8px,var(--ink) 8px,var(--ink) 16px);display:grid;place-items:center;font-family:var(--f-mono);font-size:11px;color:var(--gray);text-align:center;padding:8px}
+.res small{font-size:13px;color:var(--gray)}
+
+/* about */
+.about{display:flex;flex-direction:column;gap:14px;padding:22px;border-radius:18px;background:var(--black);color:#fff}
+.about .muted{color:#b9b8bf}
+.about .eyebrow{color:var(--gold-bg)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{border:1px solid #2c2c31;border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:2px}
+.stat b{font-family:var(--f-display);font-stretch:75%;font-weight:900;font-size:34px;line-height:1;color:var(--gold-bg);font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;color:#b9b8bf}
+.avatar{width:64px;height:64px;border-radius:50%;background:#1b1b1f;border:1px solid var(--gold-bg);display:grid;place-items:center;font-family:var(--f-display);font-weight:900;color:var(--gold-bg);font-size:22px}
+
+/* booking + form */
+.box{border-radius:18px;background:var(--ink);border:1px solid var(--line);padding:18px;display:flex;flex-direction:column;gap:14px;scroll-margin-top:80px}
+.cal-slot{min-height:640px;border-radius:12px;overflow:hidden;background:var(--ink);border:1px solid var(--line)}
+.cal-slot iframe{width:100%;height:700px;border:0;display:block}
+.cal-empty{min-height:320px;display:grid;place-items:center;text-align:center;padding:24px;font-family:var(--f-mono);font-size:13px;color:var(--gray);border:1px dashed var(--line);border-radius:12px}
+.fallback{font-size:14px;color:var(--gray);text-align:center}
+.fallback a{color:var(--gold)}
+label{font-size:14px;font-weight:700;display:block;margin-bottom:6px}
+input{width:100%;min-height:52px;border-radius:12px;border:1px solid #cfccc3;background:var(--ink);color:var(--white);padding:0 14px;font:inherit;font-size:16px}
+input:focus{outline:2px solid var(--gold);outline-offset:0;border-color:transparent}
+.field{display:flex;flex-direction:column}
+.err{color:#b42318;font-size:13px;margin-top:6px}
+.ok{font-size:14px;color:var(--gray)}
+
+/* faq */
+details{border-bottom:1px solid var(--line);padding:16px 0}
+summary{cursor:pointer;font-weight:700;list-style:none;display:flex;justify-content:space-between;gap:12px}
+summary::after{content:"+";color:var(--gold);font-family:var(--f-mono)}
+details[open] summary::after{content:"–"}
+details p{color:var(--gray);margin-top:10px;font-size:15px}
+
+footer{border-top:1px solid var(--line);padding-top:24px;display:flex;flex-direction:column;gap:10px;font-size:12px;color:var(--gray)}
+
+/* sticky bottom CTA */
+.dock{position:fixed;left:0;right:0;bottom:0;z-index:6;padding:10px 18px calc(10px + env(safe-area-inset-bottom,0px));background:color-mix(in srgb,var(--ink) 92%,transparent);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+.dock .in{max-width:480px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dock .btn{min-height:48px;font-size:15px;border-radius:12px}
+body{padding-bottom:76px}
+.todo{outline:1px dashed var(--gold);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="bar">
+    <a class="logo" href="#top" aria-label="Falcon, inicio">
+      <span class="logo-mark"><img src="/logo-emblem.png" alt="" width="24" height="25"></span>
+      FALCON
+    </a>
+    <a class="mini" href="#agendar">Agendar llamada</a>
+  </div>
+</header>
+
+<div class="ticker" aria-label="Temas de Falcon">
+  <div class="ticker-track">
+    <span><b>Prop firms</b></span><span><i>Evaluaciones</i></span><span><b>Cuentas fondeadas</b></span><span><i>Payouts</i></span><span><b>Gestión de riesgo</b></span><span><i>Journal</i></span><span><b>Prop firms</b></span><span><i>Evaluaciones</i></span><span><b>Cuentas fondeadas</b></span><span><i>Payouts</i></span><span><b>Gestión de riesgo</b></span><span><i>Journal</i></span>
+  </div>
+</div>
+
+<main class="wrap" id="top">
+
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"><canvas id="candles"></canvas></div>
+    <span class="eyebrow">Falcon Academy · Sebastián Bogado</span>
+    <h1>El método para <em>fondear en 2 días</em> y cobrar tu primer payout en 7</h1>
+    <p class="lead">Una metodología clara y validada para pasar evaluaciones de prop firms y retirar consistentemente.</p>
+    <div class="proof">
+      <span class="chip"><b>+$500K</b> en payouts verificados</span>
+    </div>
+    <div class="ctas">
+      <a class="btn btn-gold" href="#agendar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>
+        Agendar una llamada
+      </a>
+      <a class="btn btn-wa" href="#whatsapp">
+        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.3-.7-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.8s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1.1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg>
+        Hablemos por WhatsApp
+      </a>
+    </div>
+  </section>
+
+  <section class="sect" id="metodo" aria-labelledby="vid-t">
+    <span class="eyebrow">La metodología</span>
+    <h2 id="vid-t">Cómo fondear muchas cuentas y retirar rápido</h2>
+    <div class="video" id="video"></div>
+    <p class="muted">Mirá el video completo y después agendá tu llamada o escribime por WhatsApp.</p>
+  </section>
+
+  <section class="sect" id="payouts" aria-labelledby="res-t">
+    <span class="eyebrow">Payouts</span>
+    <h2 id="res-t">Retiros con este método</h2>
+    <p class="muted">Retiros de la comunidad Falcon. Deslizá para ver más.</p>
+    <div class="pcar"><div class="payouts" id="payouts-grid" aria-label="Carrusel de payouts"></div></div>
+    <div class="pnav"><span class="pcount" id="pcount"></span><span class="pbtns"><button type="button" id="pprev" aria-label="Anterior">&#8592;</button><button type="button" id="pnext" aria-label="Siguiente">&#8594;</button></span></div>
+  </section>
+
+
+
+
+  <section class="sect" aria-labelledby="how-t">
+    <span class="eyebrow">Cómo funciona</span>
+    <h2 id="how-t">De la llamada a tu primera evaluación</h2>
+    <div class="steps">
+      <div class="step"><div><h3>Hablamos</h3><p>Agendás una llamada o me escribís por WhatsApp. Vemos en qué punto estás.</p></div></div>
+      <div class="step"><div><h3>Estudiás con práctica</h3><p>Cada caso tiene su video, un ejercicio de "¿sube o baja?" y una tarea en tu journal.</p></div></div>
+      <div class="step"><div><h3>Operás con seguimiento</h3><p>Registrás cada cuenta y cada trade. Sesiones en vivo y revisión de bitácora con la comunidad.</p></div></div>
+    </div>
+  </section>
+
+
+
+  <section class="about" aria-labelledby="ab-t">
+    <img src="/logo-full.png" alt="Falcon Trading Academy" width="220" height="144" style="width:200px;height:auto;margin:0 auto 6px;display:block">
+    <div class="avatar" aria-hidden="true">SB</div>
+    <span class="eyebrow">Quién está detrás</span>
+    <h2 id="ab-t">Sebastián Bogado</h2>
+    <p class="muted">Trader y fundador de Falcon. Opero hace 8 años y hace 4 que soy rentable de forma consistente y vivo del trading.</p>
+    <p class="muted">Decidí desarrollar este programa para que más personas puedan aprender con total transparencia, reciban información de calidad y transformen de verdad sus resultados.</p>
+    <div class="stats">
+      <div class="stat"><b>8 años</b><span>operando los mercados</span></div>
+      <div class="stat"><b>4 años</b><span>rentable y viviendo del trading</span></div>
+      <div class="stat" style="grid-column:1/-1"><b>+$500K</b><span>en payouts verificados en los últimos 2 años</span></div>
+    </div>
+  </section>
+
+  <section class="box" id="agendar" aria-labelledby="cal-t">
+    <span class="eyebrow">Agendar llamada</span>
+    <h2 id="cal-t">Elegí día y horario</h2>
+    <div id="cal" class="cal-slot"></div>
+    <p class="fallback">¿No te carga el calendario? <a id="cal-out" href="#" target="_blank" rel="noopener">Abrilo en tu navegador</a></p>
+  </section>
+
+  <section class="box" id="whatsapp" aria-labelledby="wa-t">
+    <span class="eyebrow">WhatsApp</span>
+    <h2 id="wa-t">Dejame tus datos y hablamos</h2>
+    <form id="wa-form" novalidate>
+      <div style="display:flex;flex-direction:column;gap:14px">
+        <div class="field">
+          <label for="wa-name">Nombre</label>
+          <input id="wa-name" name="name" autocomplete="given-name" placeholder="Tu nombre">
+        </div>
+        <div class="field">
+          <label for="wa-phone">WhatsApp</label>
+          <input id="wa-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+595 981 123456">
+          <span class="err" id="wa-err" hidden>Escribí tu número con código de país, por ejemplo +595 981 123456.</span>
+        </div>
+        <button class="btn btn-wa" type="submit">Iniciar conversación</button>
+        <p class="ok" id="wa-ok" hidden></p>
+      </div>
+    </form>
+  </section>
+
+  <section class="sect" aria-labelledby="faq-t">
+    <span class="eyebrow">Preguntas frecuentes</span>
+    <h2 id="faq-t">Antes de escribirme</h2>
+    <div>
+      <details><summary>¿Necesito experiencia previa?</summary><p>No. El camino empieza en fundamentos: cómo funciona una evaluación de prop firm, cuánto arriesgar por operación y cómo registrar cada trade.</p></details>
+      <details><summary>¿Qué es una prop firm?</summary><p>Una empresa que te da una cuenta para operar si pasás su evaluación. Pagás la evaluación, no arriesgás capital propio en la cuenta, y si cumplís las reglas podés retirar ganancias.</p></details>
+    </div>
+  </section>
+
+  <footer>
+    <strong style="color:var(--white);font-family:var(--f-display);font-stretch:80%;font-size:16px;letter-spacing:.04em">FALCON</strong>
+    <p>Asunción, Paraguay</p>
+    <p>El trading implica riesgo de pérdida. Los resultados de alumnos no garantizan resultados futuros. Este contenido es educativo y no es asesoramiento financiero.</p>
+  </footer>
+</main>
+
+<div class="dock">
+  <div class="in">
+    <a class="btn btn-gold" href="#agendar">Agendar</a>
+    <a class="btn btn-wa" href="#whatsapp">WhatsApp</a>
+  </div>
+</div>
+
+<script>
+/* ===== CONFIGURACIÓN: completar con tus datos ===== */
+const VIMEO_URL    = "https://vimeo.com/1232521158";      // ej: "https://vimeo.com/123456789" (video de la metodología)
+const CALENDLY_URL = "https://calendly.com/falconwork333/llamada-de-consultoria-falcon";      // ej: "https://calendly.com/tu-usuario/llamada"
+const WA_NUMBER    = "595981204321";      // solo números con código de país, ej: "595981123456"
+const WA_MESSAGE   = "Hola, soy {name}. Vengo de TikTok y quiero info sobre Falcon.";
+// Capturas de payouts: subí las imágenes a la carpeta "payouts" y agregá cada nombre de archivo acá.
+// [archivo, ancho, alto]
+const PAYOUTS = [
+  ["payouts/01.jpg", 597, 739],
+  ["payouts/02.jpg", 350, 348],
+  ["payouts/03.jpg", 800, 540],
+  ["payouts/04.jpg", 605, 543],
+  ["payouts/05.jpg", 560, 542],
+  ["payouts/06.jpg", 800, 540],
+  ["payouts/07.jpg", 800, 1227],
+  ["payouts/08.jpg", 800, 540],
+  ["payouts/09.jpg", 608, 750],
+  ["payouts/10.jpg", 800, 540],
+  ["payouts/11.jpg", 800, 788],
+  ["payouts/12.jpg", 800, 540],
+  ["payouts/13.jpg", 800, 1231],
+  ["payouts/14.jpg", 800, 540],
+  ["payouts/15.jpg", 800, 1111],
+  ["payouts/16.jpg", 800, 788],
+  ["payouts/17.jpg", 800, 788],
+  ["payouts/18.jpg", 800, 527],
+  ["payouts/19.jpg", 800, 555],
+  ["payouts/20.jpg", 800, 1115],
+  ["payouts/21.jpg", 800, 543],
+  ["payouts/22.jpg", 800, 788],
+  ["payouts/23.jpg", 800, 555],
+];
+/* ================================================= */
+
+(function(){
+  // Carrusel de payouts
+  const pg=document.getElementById('payouts-grid');
+  PAYOUTS.forEach(([src,w,h],i)=>{const a=document.createElement('a');a.href=src;a.style.aspectRatio=w+'/'+h;a.style.setProperty('--r',w/h);a.target='_blank';a.rel='noopener';
+    const im=document.createElement('img');im.src=src;im.alt='Certificado de payout '+(i+1);im.width=w;im.height=h;im.loading=i<3?'eager':'lazy';a.appendChild(im);pg.appendChild(a);});
+  const pc=document.getElementById('pcount'),pp=document.getElementById('pprev'),pn=document.getElementById('pnext');
+  const step=()=>pg.clientWidth*0.8;
+  const upd=()=>{const mid=pg.scrollLeft+pg.clientWidth/2;let i=0;[...pg.children].forEach((c,k)=>{if(c.offsetLeft<=mid)i=k});pc.textContent=(i+1)+' / '+PAYOUTS.length+' payouts';
+    pp.disabled=pg.scrollLeft<5;pn.disabled=pg.scrollLeft+pg.clientWidth>=pg.scrollWidth-5;};
+  const go=d=>{const mid=pg.scrollLeft+pg.clientWidth/2;const cs=[...pg.children];let i=0;cs.forEach((c,k)=>{if(c.offsetLeft<=mid)i=k});const t=cs[Math.max(0,Math.min(cs.length-1,i+d))];pg.scrollTo({left:t.offsetLeft-(pg.clientWidth-t.offsetWidth)/2,behavior:'smooth'})};pp.onclick=()=>go(-1);pn.onclick=()=>go(1);
+  pg.addEventListener('scroll',()=>requestAnimationFrame(upd),{passive:true});addEventListener('resize',upd);addEventListener('load',upd);upd();
+
+  // Video de la metodología (Vimeo)
+  const vb=document.getElementById('video');
+  const vid=(VIMEO_URL.match(/vimeo\.com\/(?:video\/)?(\d+)/)||[])[1];
+  if(vid){const f=document.createElement('iframe');f.src='https://player.vimeo.com/video/'+vid+'?title=0&byline=0&portrait=0&color=d4ad55';f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;f.title='La metodología Falcon';vb.appendChild(f);}
+  else vb.innerHTML='<div class="video-empty"><span class="play"><svg viewBox="0 0 24 24" fill="#1a1405"><path d="M7 4v16l13-8z"/></svg></span>Acá va tu video de la metodología<br>(Vimeo, horizontal 16:9)</div>';
+
+  // Si el navegador bloquea el reproductor (por ejemplo en una vista previa), mostrar un acceso directo al video
+  document.addEventListener('securitypolicyviolation',e=>{
+    if(!vid || !/vimeo/.test(e.blockedURI||'')) return;
+    vb.innerHTML='<a class="vfall" href="'+VIMEO_URL+'" target="_blank" rel="noopener"><span class="play"><svg viewBox="0 0 24 24" fill="#1a1405"><path d="M7 4v16l13-8z"/></svg></span>Ver el video: Fondea en 2 días</a>';
+  });
+
+  // Calendly incrustado en la página (inline, sin popup) para que funcione dentro del navegador de TikTok
+  const slot = document.getElementById('cal');
+  const out = document.getElementById('cal-out');
+  if (CALENDLY_URL) {
+    const u = new URL(CALENDLY_URL);
+    u.searchParams.set('hide_gdpr_banner','1');
+    u.searchParams.set('background_color','ffffff');
+    u.searchParams.set('text_color','0d0d0f');
+    u.searchParams.set('primary_color','a77d22');
+    const f = document.createElement('iframe');
+    f.src = u.toString(); f.title = 'Agendar llamada con Falcon'; f.loading = 'lazy';
+    slot.appendChild(f);
+    out.href = CALENDLY_URL;
+  } else {
+    slot.className = 'cal-empty';
+    slot.textContent = 'Acá va tu Calendly incrustado. Falta pegar tu link de Calendly.';
+    out.closest('p').hidden = true;
+  }
+
+  // Formulario -> WhatsApp
+  const form = document.getElementById('wa-form');
+  const err = document.getElementById('wa-err');
+  const ok = document.getElementById('wa-ok');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.getElementById('wa-name').value.trim() || 'un interesado';
+    const digits = document.getElementById('wa-phone').value.replace(/\D/g,'');
+    err.hidden = digits.length >= 8;
+    if (digits.length < 8) return;
+    // TODO (versión Vercel): guardar {name, phone, origen:"tiktok"} en Supabase antes de redirigir
+    if (!WA_NUMBER) { ok.hidden = false; ok.textContent = 'Vista previa: falta configurar tu número de WhatsApp.'; return; }
+    const link = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_MESSAGE.replace('{name}', name));
+    ok.hidden = false;
+    ok.innerHTML = 'Abriendo WhatsApp… Si no se abre, <a href="' + link + '" target="_blank" rel="noopener" style="color:var(--gold)">tocá acá</a>.';
+    window.location.href = link;
+  });
+})();
+
+// Fondo del hero: velas japonesas que se dibujan lentamente
+(function(){
+  const c=document.getElementById('candles'); if(!c) return;
+  const ctx=c.getContext('2d');
+  const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let W,H,dpr,candles=[],off=0,price=50,t0=performance.now();
+  const step=18, bodyW=8;
+  function next(){
+    const o=price, drift=0.18, vol=4.2;
+    const c2=o+(Math.random()-0.5+drift*0.35)*vol;
+    const hi=Math.max(o,c2)+Math.random()*2.6, lo=Math.min(o,c2)-Math.random()*2.6;
+    price=c2; if(price>80) price-=6; if(price<20) price+=6;
+    return {o,c:c2,hi,lo};
+  }
+  function resize(){
+    dpr=Math.min(devicePixelRatio||1,2);
+    W=c.clientWidth;H=c.clientHeight;c.width=W*dpr;c.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0);
+    const need=Math.ceil(W/step)+3; while(candles.length<need) candles.push(next());
+  }
+  function y(v){return H*0.92 - (v/100)*H*0.8}
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    // grid
+    ctx.strokeStyle='rgba(13,13,15,0.05)';ctx.lineWidth=1;
+    for(let gy=H*0.15;gy<H;gy+=H/6){ctx.beginPath();ctx.moveTo(0,gy);ctx.lineTo(W,gy);ctx.stroke();}
+    // liquidez: línea punteada dorada
+    ctx.setLineDash([4,6]);ctx.strokeStyle='rgba(167,125,34,0.35)';
+    ctx.beginPath();ctx.moveTo(0,H*0.3);ctx.lineTo(W,H*0.3);ctx.stroke();ctx.setLineDash([]);
+    candles.forEach((k,i)=>{
+      const x=i*step-off+step/2;
+      const up=k.c>=k.o;
+      const col=up?'rgba(167,125,34,0.55)':'rgba(13,13,15,0.22)';
+      ctx.strokeStyle=col;ctx.fillStyle=up?'rgba(212,173,85,0.45)':'rgba(13,13,15,0.14)';
+      ctx.beginPath();ctx.moveTo(x,y(k.hi));ctx.lineTo(x,y(k.lo));ctx.stroke();
+      const top=y(Math.max(k.o,k.c)),h=Math.max(2,Math.abs(y(k.o)-y(k.c)));
+      ctx.fillRect(x-bodyW/2,top,bodyW,h);ctx.strokeRect(x-bodyW/2+.5,top+.5,bodyW-1,h-1);
+    });
+  }
+  function loop(now){
+    off+=(now-t0)*0.012; t0=now;
+    while(off>=step){off-=step;candles.shift();candles.push(next());}
+    draw(); requestAnimationFrame(loop);
+  }
+  resize(); addEventListener('resize',resize);
+  if(reduce){draw();} else requestAnimationFrame(t=>{t0=t;loop(t)});
+})();
+</script>
+
+<script>
+/* ===== PÍXEL DE TIKTOK (opcional) =====
+   Cuando crees el píxel en TikTok Ads Manager, pegá el ID entre las comillas.
+   Mientras esté vacío no se carga nada. */
+const TIKTOK_PIXEL_ID = "";
+if (TIKTOK_PIXEL_ID) {
+  !function (w, d, t) {
+    w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js";ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var o=d.createElement("script");o.type="text/javascript",o.async=!0,o.src=r+"?sdkid="+e+"&lib="+t;var a=d.getElementsByTagName("script")[0];a.parentNode.insertBefore(o,a)};
+    ttq.load(TIKTOK_PIXEL_ID); ttq.page();
+  }(window, document, "ttq");
+  // Eventos de conversión: clic en WhatsApp y en agendar
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a,button"); if (!a || !window.ttq) return;
+    if (a.matches(".btn-wa")) ttq.track("Contact");
+    if (a.getAttribute("href") === "#agendar") ttq.track("ClickButton");
+  });
+  document.getElementById("wa-form")?.addEventListener("submit", () => window.ttq && ttq.track("SubmitForm"));
+}
+</script>
+
+</body>
+</html>
