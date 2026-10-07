@@ -168,6 +168,12 @@ label{font-size:14px;font-weight:700;display:block;margin-bottom:6px}
 input{width:100%;min-height:52px;border-radius:12px;border:1px solid #cfccc3;background:var(--ink);color:var(--white);padding:0 14px;font:inherit;font-size:16px}
 input:focus{outline:2px solid var(--gold);outline-offset:0;border-color:transparent}
 .field{display:flex;flex-direction:column}
+.phone-row{display:flex;gap:8px}
+.phone-row input{flex:1;min-width:0}
+.cc{position:relative;flex:none;display:flex;align-items:center;gap:6px;min-height:52px;padding:0 12px;border:1px solid #cfccc3;border-radius:12px;background:var(--ink);font-size:16px;font-weight:500;margin:0;cursor:pointer}
+.cc::after{content:"▾";font-size:12px;color:var(--gray)}
+.cc select{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer;font-size:16px}
+.cc:focus-within{outline:2px solid var(--gold)}
 .err{color:#b42318;font-size:13px;margin-top:6px}
 .ok{font-size:14px;color:var(--gray)}
 
@@ -292,8 +298,14 @@ body{padding-bottom:76px}
         </div>
         <div class="field">
           <label for="wa-phone">WhatsApp</label>
-          <input id="wa-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+595 981 123456" required>
-          <span class="err" id="wa-err" hidden>Escribí tu número con código de país, por ejemplo +595 981 123456.</span>
+          <div class="phone-row">
+            <label class="cc" aria-label="País">
+              <span id="cc-show">🇵🇾 +595</span>
+              <select id="wa-cc" autocomplete="country"><option value="PY" data-cc="595" selected>🇵🇾 Paraguay (+595)</option><option value="AR" data-cc="54">🇦🇷 Argentina (+54)</option><option value="UY" data-cc="598">🇺🇾 Uruguay (+598)</option><option value="BO" data-cc="591">🇧🇴 Bolivia (+591)</option><option value="BR" data-cc="55">🇧🇷 Brasil (+55)</option><option value="CL" data-cc="56">🇨🇱 Chile (+56)</option><option value="PE" data-cc="51">🇵🇪 Perú (+51)</option><option value="CO" data-cc="57">🇨🇴 Colombia (+57)</option><option value="EC" data-cc="593">🇪🇨 Ecuador (+593)</option><option value="VE" data-cc="58">🇻🇪 Venezuela (+58)</option><option value="MX" data-cc="52">🇲🇽 México (+52)</option><option value="GT" data-cc="502">🇬🇹 Guatemala (+502)</option><option value="SV" data-cc="503">🇸🇻 El Salvador (+503)</option><option value="HN" data-cc="504">🇭🇳 Honduras (+504)</option><option value="NI" data-cc="505">🇳🇮 Nicaragua (+505)</option><option value="CR" data-cc="506">🇨🇷 Costa Rica (+506)</option><option value="PA" data-cc="507">🇵🇦 Panamá (+507)</option><option value="DO" data-cc="1">🇩🇴 Rep. Dominicana (+1)</option><option value="PR" data-cc="1">🇵🇷 Puerto Rico (+1)</option><option value="CU" data-cc="53">🇨🇺 Cuba (+53)</option><option value="US" data-cc="1">🇺🇸 Estados Unidos (+1)</option><option value="CA" data-cc="1">🇨🇦 Canadá (+1)</option><option value="ES" data-cc="34">🇪🇸 España (+34)</option><option value="IT" data-cc="39">🇮🇹 Italia (+39)</option><option value="DE" data-cc="49">🇩🇪 Alemania (+49)</option><option value="FR" data-cc="33">🇫🇷 Francia (+33)</option><option value="PT" data-cc="351">🇵🇹 Portugal (+351)</option><option value="GB" data-cc="44">🇬🇧 Reino Unido (+44)</option></select>
+            </label>
+            <input id="wa-phone" name="phone" type="tel" inputmode="numeric" autocomplete="tel-national" placeholder="981 123456" required>
+          </div>
+          <span class="err" id="wa-err" hidden>Revisá tu número de WhatsApp.</span>
         </div>
         <input type="text" name="empresa" id="wa-hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
         <button class="btn btn-wa" type="submit" id="wa-btn">Quiero que me escriban</button>
@@ -413,14 +425,25 @@ const PAYOUTS = [
   const err = document.getElementById('wa-err'), errN = document.getElementById('wa-err-name');
   const btn = document.getElementById('wa-btn');
   const qs = new URLSearchParams(location.search);
+  const ccSel = document.getElementById('wa-cc'), ccShow = document.getElementById('cc-show');
+  const showCC = () => { const o = ccSel.selectedOptions[0]; ccShow.textContent = o.textContent.split(' ')[0] + ' +' + o.dataset.cc; };
+  try { // preselecciona el país según el idioma del celular (ej. es-AR → Argentina); si no, Paraguay
+    const reg = (navigator.language || '').split('-')[1];
+    if (reg && ccSel.querySelector('option[value="' + reg.toUpperCase() + '"]')) ccSel.value = reg.toUpperCase();
+  } catch (_) {}
+  showCC(); ccSel.addEventListener('change', showCC);
   form.addEventListener('submit', async e => {
     e.preventDefault();
     const name = document.getElementById('wa-name').value.trim();
     const raw = document.getElementById('wa-phone').value.trim();
-    const digits = raw.replace(/\D/g,'');
-    errN.hidden = !!name; err.hidden = digits.length >= 8;
-    if (!name || digits.length < 8) return;
-    const phone = '+' + digits;
+    const cc = ccSel.selectedOptions[0].dataset.cc;
+    let local = raw.replace(/\D/g,'');
+    if (raw.startsWith('+') || local.startsWith('00')) local = local.replace(/^00/,'');      // ya escribió el código internacional
+    else { local = local.replace(/^0+/,''); if (!local.startsWith(cc) || local.length < 10) { if (cc === '54' && !local.startsWith('9')) local = '9' + local.replace(/^(\d{2,4})15/,'$1'); local = cc + local; } } // Argentina: WhatsApp usa +54 9 // agrega el código del país elegido
+    const okLen = local.length >= cc.length + 6 && local.length <= 15;
+    errN.hidden = !!name; err.hidden = okLen;
+    if (!name || !okLen) return;
+    const phone = '+' + local;
     btn.disabled = true; btn.textContent = 'Enviando…';
     const payload = {
       name, phone, source: 'sebastrade.com',
