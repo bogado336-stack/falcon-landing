@@ -282,21 +282,29 @@ body{padding-bottom:76px}
   <section class="box" id="whatsapp" aria-labelledby="wa-t">
     <span class="eyebrow">WhatsApp</span>
     <h2 id="wa-t">Dejame tus datos y hablamos</h2>
+    <p class="muted">Dejá tu nombre y tu WhatsApp. Te escribimos en minutos.</p>
     <form id="wa-form" novalidate>
       <div style="display:flex;flex-direction:column;gap:14px">
         <div class="field">
           <label for="wa-name">Nombre</label>
-          <input id="wa-name" name="name" autocomplete="given-name" placeholder="Tu nombre">
+          <input id="wa-name" name="name" autocomplete="name" placeholder="Tu nombre" required>
+          <span class="err" id="wa-err-name" hidden>Escribí tu nombre.</span>
         </div>
         <div class="field">
           <label for="wa-phone">WhatsApp</label>
-          <input id="wa-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+595 981 123456">
+          <input id="wa-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+595 981 123456" required>
           <span class="err" id="wa-err" hidden>Escribí tu número con código de país, por ejemplo +595 981 123456.</span>
         </div>
-        <button class="btn btn-wa" type="submit">Iniciar conversación</button>
-        <p class="ok" id="wa-ok" hidden></p>
+        <input type="text" name="empresa" id="wa-hp" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+        <button class="btn btn-wa" type="submit" id="wa-btn">Quiero que me escriban</button>
       </div>
     </form>
+    <div id="wa-done" hidden style="display:flex;flex-direction:column;gap:12px;text-align:center;padding:8px 0">
+      <div style="width:56px;height:56px;border-radius:50%;background:var(--wa);display:grid;place-items:center;margin:0 auto"><svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#04210f" stroke-width="3" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+      <h3>¡Listo, <span id="wa-done-name"></span>!</h3>
+      <p class="muted">Recibimos tus datos. Te escribimos por WhatsApp en los próximos minutos.</p>
+      <a class="btn btn-ghost" id="wa-direct" href="#" target="_blank" rel="noopener">Prefiero escribir yo ahora</a>
+    </div>
   </section>
 
   <section class="sect" aria-labelledby="faq-t">
@@ -400,22 +408,32 @@ const PAYOUTS = [
     out.closest('p').hidden = true;
   }
 
-  // Formulario -> WhatsApp
+  // Formulario -> GoHighLevel (vía /api/lead). No abre WhatsApp: el contacto queda guardado y te escribimos.
   const form = document.getElementById('wa-form');
-  const err = document.getElementById('wa-err');
-  const ok = document.getElementById('wa-ok');
-  form.addEventListener('submit', e => {
+  const err = document.getElementById('wa-err'), errN = document.getElementById('wa-err-name');
+  const btn = document.getElementById('wa-btn');
+  const qs = new URLSearchParams(location.search);
+  form.addEventListener('submit', async e => {
     e.preventDefault();
-    const name = document.getElementById('wa-name').value.trim() || 'un interesado';
-    const digits = document.getElementById('wa-phone').value.replace(/\D/g,'');
-    err.hidden = digits.length >= 8;
-    if (digits.length < 8) return;
-    // TODO (versión Vercel): guardar {name, phone, origen:"tiktok"} en Supabase antes de redirigir
-    if (!WA_NUMBER) { ok.hidden = false; ok.textContent = 'Vista previa: falta configurar tu número de WhatsApp.'; return; }
-    const link = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_MESSAGE.replace('{name}', name));
-    ok.hidden = false;
-    ok.innerHTML = 'Abriendo WhatsApp… Si no se abre, <a href="' + link + '" target="_blank" rel="noopener" style="color:var(--gold)">tocá acá</a>.';
-    window.location.href = link;
+    const name = document.getElementById('wa-name').value.trim();
+    const raw = document.getElementById('wa-phone').value.trim();
+    const digits = raw.replace(/\D/g,'');
+    errN.hidden = !!name; err.hidden = digits.length >= 8;
+    if (!name || digits.length < 8) return;
+    const phone = '+' + digits;
+    btn.disabled = true; btn.textContent = 'Enviando…';
+    const payload = {
+      name, phone, source: 'sebastrade.com',
+      utm_source: qs.get('utm_source') || 'tiktok', utm_campaign: qs.get('utm_campaign') || '',
+      page: location.href, empresa: document.getElementById('wa-hp').value
+    };
+    try {
+      await fetch('/api/lead', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(payload), keepalive:true});
+    } catch (_) { /* aunque falle, mostramos el siguiente paso */ }
+    if (window.ttq) ttq.track('SubmitForm');
+    document.getElementById('wa-done-name').textContent = name.split(' ')[0];
+    document.getElementById('wa-direct').href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(WA_MESSAGE.replace('{name}', name));
+    form.hidden = true; document.getElementById('wa-done').hidden = false;
   });
 })();
 
@@ -483,7 +501,6 @@ if (TIKTOK_PIXEL_ID) {
     if (a.matches(".btn-wa")) ttq.track("Contact");
     if (a.getAttribute("href") === "#agendar") ttq.track("ClickButton");
   });
-  document.getElementById("wa-form")?.addEventListener("submit", () => window.ttq && ttq.track("SubmitForm"));
 }
 </script>
 
